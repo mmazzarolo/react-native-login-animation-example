@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Platform, StyleSheet, TextInput } from 'react-native'
 import { View } from 'react-native-animatable'
-import colors from '../config/colors'
 
 const IS_ANDROID = Platform.OS === 'android'
 

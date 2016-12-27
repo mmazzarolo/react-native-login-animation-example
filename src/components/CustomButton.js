@@ -2,17 +2,14 @@ import React, { PropTypes } from 'react'
 import { ActivityIndicator, StyleSheet, Text } from 'react-native'
 
 import TouchableView from './TouchableView'
-import colors from '../config/colors'
 
 const CustomButton = ({ onPress, isEnabled, isLoading, text, buttonStyle, textStyle }) => {
-  const backgroundColor = isEnabled && !isLoading ? 'white' : colors.BUTTON_DISABLED
-  const color = isEnabled && !isLoading ? colors.PRIMARY_DARK : 'white'
   const onButtonPress = isEnabled && !isLoading ? onPress : () => null
 
   return (
-    <TouchableView onPress={onButtonPress} style={[styles.button, { backgroundColor }, buttonStyle]}>
+    <TouchableView onPress={onButtonPress} style={[styles.button, buttonStyle]}>
       {(isLoading) && <ActivityIndicator style={styles.spinner} color={'grey'} />}
-      {(!isLoading) && <Text style={[styles.text, { color }, textStyle]}>{text}</Text>}
+      {(!isLoading) && <Text style={[styles.text, textStyle]}>{text}</Text>}
     </TouchableView>
   )
 }
@@ -29,8 +26,7 @@ CustomButton.propTypes = {
 CustomButton.defaultProps = {
   onPress: () => null,
   isEnabled: true,
-  isLoading: false,
-  text: 'Test'
+  isLoading: false
 }
 
 const styles = StyleSheet.create({

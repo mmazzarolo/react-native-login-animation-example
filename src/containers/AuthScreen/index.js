@@ -3,7 +3,6 @@ import { KeyboardAvoidingView, LayoutAnimation, Platform, StyleSheet, UIManager 
 import { Image, View } from 'react-native-animatable'
 
 import imgLogo from '../../images/logo.png'
-import colors from '../../config/colors'
 import metrics from '../../config/metrics'
 
 import Opening from './Opening'
@@ -34,42 +33,25 @@ export default class AuthScreen extends Component {
   }
 
   _hideAuthScreen = async () => {
-    // 1. Hide the form content
-    if (this.formRef && this.formRef.hideForm) {
-      await this.formRef.hideForm()
-    }
-    // 2. Slide out the form container
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.linear)
-    this._setVisibleForm(null)
-    // 3. Fade out the logo
-    setTimeout(() => this.logoImgRef.fadeOut(400), 800)
-    setTimeout(this.props.onLoginAnimationCompleted, 1300)
+    // 1. Slide out the form container
+    await this._setVisibleForm(null)
+    // 2. Fade out the logo
+    await this.logoImgRef.fadeOut(800)
+    // 3. Tell the container (app.js) that the animation has completed
+    this.props.onLoginAnimationCompleted()
   }
 
-  _setVisibleForm = (visibleForm) => {
+  _setVisibleForm = async (visibleForm) => {
+    // 1. Hide the current form (if any)
+    if (this.state.visibleForm && this.formRef && this.formRef.hideForm) {
+      await this.formRef.hideForm()
+    }
+    // 2. Configure a spring animation for the next step
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
+    // 3. Set the new visible form
     this.setState({ visibleForm })
   }
 
-  _handleCreateAccountPress = () => {
-    this._setVisibleForm('SIGNUP')
-  }
-
-  _handleLoginLinkPress = async () => {
-    if (this.formRef && this.formRef.hideForm) {
-      await this.formRef.hideForm()
-    }
-    this._setVisibleForm('LOGIN')
-  }
-
-  _handleSignupLinkPress = async () => {
-    if (this.formRef && this.formRef.hideForm) {
-      await this.formRef.hideForm()
-    }
-    this._setVisibleForm('SIGNUP')
-  }
-
-  // https://medium.com/@erikras/the-hoc-drill-pattern-a676a3889ced#.lrsbocxj7
   render () {
     const { isLoggedIn, isLoading, signup, login } = this.props
     const { visibleForm } = this.state
@@ -98,7 +80,7 @@ export default class AuthScreen extends Component {
           {(visibleForm === 'SIGNUP') && (
             <SignupForm
               ref={(ref) => this.formRef = ref}
-              onLoginLinkPress={this._handleLoginLinkPress}
+              onLoginLinkPress={() => this._setVisibleForm('LOGIN')}
               onSignupPress={signup}
               isLoading={isLoading}
             />
@@ -106,7 +88,7 @@ export default class AuthScreen extends Component {
           {(visibleForm === 'LOGIN') && (
             <LoginForm
               ref={(ref) => this.formRef = ref}
-              onSignupLinkPress={this._handleSignupLinkPress}
+              onSignupLinkPress={() => this._setVisibleForm('SIGNUP')}
               onLoginPress={login}
               isLoading={isLoading}
             />
@@ -117,7 +99,6 @@ export default class AuthScreen extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -125,7 +106,6 @@ const styles = StyleSheet.create({
     width: metrics.DEVICE_WIDTH,
     height: metrics.DEVICE_HEIGHT,
     paddingTop: 24,
-    // justifyContent: 'space-between',
     backgroundColor: 'white'
   },
   logoImg: {
@@ -134,11 +114,9 @@ const styles = StyleSheet.create({
     width: IMAGE_WIDTH,
     alignSelf: 'center',
     resizeMode: 'contain',
-    marginVertical: 40
+    marginVertical: 30
   },
   bottom: {
-    // flex: 1,
     backgroundColor: '#1976D2'
-    // marginTop: 200
   }
 })

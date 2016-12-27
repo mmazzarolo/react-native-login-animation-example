@@ -1,32 +1,45 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
 
 import AuthScreen from './containers/AuthScreen'
 import HomeScreen from './containers/HomeScreen'
 
+/**
+ * The root component of the application.
+ * In this component I am handling the entire application state, but in a real app you should
+ * probably use a state management library like Redux or MobX to handle the state (if your app gets bigger).
+ */
 export class LoginAnimation extends Component {
   state = {
-    isLoggedIn: false,
-    isLoading: false,
-    isAppReady: false
+    isLoggedIn: false, // Is the user authenticated?
+    isLoading: false, // Is the user loggingIn/signinUp?
+    isAppReady: false // Has the app completed the login animation?
   }
 
+  /**
+   * Two login function that waits 1000 ms and then authenticates the user succesfully.
+   * In your real app they should be replaced with an API call to you backend.
+   */
   _simulateLogin = (username, password) => {
     this.setState({ isLoading: true })
-    setTimeout(() => {
-      if (username === 'testtest' && password === 'testtest') {
-        this.setState({ isLoggedIn: true, isLoading: false })
-      }
-    }, 400)
+    setTimeout(() => this.setState({ isLoggedIn: true, isLoading: false }), 1000)
   }
 
   _simulateSignup = (username, password, fullName) => {
-    setTimeout(() => this.setState({ isLoggedIn: true, isLoading: false }), 400)
+    this.setState({ isLoading: true })
+    setTimeout(() => this.setState({ isLoggedIn: true, isLoading: false }), 1000)
   }
 
-  _renderContent = () => {
+  /**
+   * Simple routing.
+   * If the user is authenticated (isAppReady) show the HomeScreen, otherwise show the AuthScreen
+   */
+  render () {
     if (this.state.isAppReady) {
-      return <HomeScreen onLogout={() => this.setState({ isLoggedIn: false, isAppReady: false })} />
+      return (
+        <HomeScreen
+          logout={() => this.setState({ isLoggedIn: false, isAppReady: false })}
+        />
+      )
     } else {
       return (
         <AuthScreen
@@ -39,20 +52,6 @@ export class LoginAnimation extends Component {
       )
     }
   }
-
-  render () {
-    return (
-      <View style={styles.container}>
-        {this._renderContent()}
-      </View>
-    )
-  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
 
 export default LoginAnimation
