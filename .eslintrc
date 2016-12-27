@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "eslint-config-mostaza-react"
+  ],
+  "parser": "babel-eslint",
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
+}
