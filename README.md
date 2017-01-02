@@ -3,7 +3,8 @@
 ## Description
 This is a simple demo of a login/signup animation built with react-native.  
 This repository contains the source code used to run the animation.   
-The animation concept I used is [the Dropbox Material Redesign Concept by Sam Atmore](https://dribbble.com/shots/2456987-Dropbox-Material-Redesign-Concept).
+The animation concept I used is [the Dropbox Material Redesign Concept by Sam Atmore](https://dribbble.com/shots/2456987-Dropbox-Material-Redesign-Concept).  
+The example is available in Exponent too: https://getexponent.com/@community/login-animation-example
 
 ## Gif and vid!
 <p align="center">
