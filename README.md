@@ -1,25 +1,23 @@
 # A React-Native login animation example
 
+## Description
+This is a simple demo of a login/signup animation built with react-native.  
+This repository contains the source code used to run the animation. 
+
 ## Gif and vid!
 <p align="center">
 <img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/low-quality-app-intro.gif"></img>  
 </p>
   
 <p align="center">
-You can also see the animation in action <a href="https://www.youtube.com/watch?v=D67-hAj9LBQ">on this Youtube link</a>.
+You can also see the animation in a much better quality <a href="https://www.youtube.com/watch?v=D67-hAj9LBQ">on this Youtube link</a>.
 </p>
-
-
-
-## Description
-This is a simple demo of a login/signup animation built with react-native. 
-This repository contains the source code used to run the animation. 
 
 ## Project structure 
 The structure of the application is the following:
 ```javascript
 src
- ├── app.js // The app entry point (here I also handle routing and state)
+ ├── app.js // The app entry point (for sake of simplicity I handle here the routing and the state)
  │
  ├── components
  │   ├── CustomButton.js // The button used in the app
@@ -44,7 +42,7 @@ src
 ## Dependencies
 The dependencies needed for this app are the following:
 ```javascript
-"react-native" >= "0.39.2",
+"react-native" >= "0.38.0",
 "react-native-animatable" >= "1.1.0"
 ```
 
