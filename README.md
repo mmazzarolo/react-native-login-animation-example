@@ -2,7 +2,8 @@
 
 ## Description
 This is a simple demo of a login/signup animation built with react-native.  
-This repository contains the source code used to run the animation. 
+This repository contains the source code used to run the animation.   
+The animation concept I used is [the Dropbox Material Redesign Concept by Sam Atmore](https://dribbble.com/shots/2456987-Dropbox-Material-Redesign-Concept).
 
 ## Gif and vid!
 <p align="center">
@@ -58,3 +59,7 @@ The dependencies needed for this app are the following:
 <p align="center">
 <img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/Schermata%202017-01-02%20alle%2012.59.48.png"></img>  
 </p>
+
+## Animations info and app flow description
+Most of the app flow is described inside [src/app.js](https://github.com/mmazzarolo/react-native-login-animation-example/blob/master/src/app.js) and [src/containers/AuthScreen/index.js](https://github.com/mmazzarolo/react-native-login-animation-example/blob/master/src/containers/AuthScreen/index.js).  
+Feel free to open an issue if something is not clear enough! :fish:  
