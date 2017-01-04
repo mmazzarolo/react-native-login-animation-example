@@ -15,7 +15,7 @@ if (Platform.OS === 'android') UIManager.setLayoutAnimationEnabledExperimental(t
 
 /**
  * The authentication screen.
- * It can shows three different sub-screens:
+ * It shows three different sub-screens:
  * - The opening screen, with the two buttons that redirect to the login/signup forms (if this.state.visibleForm === null)
  * - The signup form (if this.state.visibleForm === 'SIGNUP')
  * - The login form (if this.state.visibleForm === 'LOGIN')
