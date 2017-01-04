@@ -19,26 +19,26 @@ if (Platform.OS === 'android') UIManager.setLayoutAnimationEnabledExperimental(t
  * - The opening screen, with the two buttons that redirect to the login/signup forms (if this.state.visibleForm === null)
  * - The signup form (if this.state.visibleForm === 'SIGNUP')
  * - The login form (if this.state.visibleForm === 'LOGIN')
- * 
+ *
  * The app state (isLoggedIn, isLoading) and the login/signup functions are received as props from src.app.js
- * 
+ *
  * The animations are delegated to:
  * - react-native-animatable: for the simpler animations of the components (in e.g. bounceIn animation of the logo)
  * - react-native's LayoutAnimation: for the form show/hide animation
  * - react-native's KeyboardAvoidingView: for applying a bottom padding when a keyboard show-up is detected
- * 
+ *
  * An example of this screen animation flow is the following:
  * - The user opens the app.
- * - The logo shows up using the bounceIn animation of react-native-animatable, while the "Opening" subscreen animates the button 
+ * - The logo shows up using the bounceIn animation of react-native-animatable, while the "Opening" subscreen animates the button
  *   using the fadeIn animation of react-native-animatable.
  * - The user taps on the "Create account" button.
  * - _setVisibleForm gets called with the 'SIGNUP' parameter. It configures the next animation and sets this.state.visibleForm to 'SIGNUP'.
- *   The state change triggers a render and the change of formStyle gets animated (thanks to the animation configuration previously 
+ *   The state change triggers a render and the change of formStyle gets animated (thanks to the animation configuration previously
  *   applied by _setVisibleForm).
  * - Just after the signup form has become visible it animates the form button using the bounceIn animation of react-native-animatable.
  * - The user fills up its info and signup succesfully.
  * - componentWillUpdate checks the isLoggedIn props and after realizing that the user has just authenticated it calls _hideAuthScreen.
- *   _hideAuthScreen then 1. calls the SignupForm.hideForm(), that hides the form buttons (zoomOut) and the form itself (fadeOut), 
+ *   _hideAuthScreen then 1. calls the SignupForm.hideForm(), that hides the form buttons (zoomOut) and the form itself (fadeOut),
  *   2. fadeOut the logo, 3. tells the container that the login animation has completed and that the app is ready to show the next screen (HomeScreen).
  */
 export default class AuthScreen extends Component {

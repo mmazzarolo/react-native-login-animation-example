@@ -20,10 +20,11 @@ export default class LoginForm extends Component {
   }
 
   hideForm = async () => {
-    if (this.footerRef) {
+    if (this.buttonRef && this.formRef && this.linkRef) {
       await Promise.all([
-        this.footerRef.zoomOut(200),
-        this.formRef.fadeOut(300)
+        this.buttonRef.zoomOut(200),
+        this.formRef.fadeOut(300),
+        this.linkRef.fadeOut(300)
       ])
     }
   }
@@ -34,7 +35,7 @@ export default class LoginForm extends Component {
     const isValid = email !== '' && password !== ''
     return (
       <View style={styles.container}>
-        <View style={styles.form} ref={(ref) => this.formRef = ref}>
+        <View style={styles.form} ref={(ref) => { this.formRef = ref }}>
           <CustomTextInput
             name={'email'}
             ref={(ref) => this.emailInputRef = ref}
@@ -60,21 +61,25 @@ export default class LoginForm extends Component {
             isEnabled={!isLoading}
           />
         </View>
-        <View
-          style={styles.footer}
-          ref={(ref) => this.footerRef = ref}
-          animation={'bounceIn'}
-          duration={600} delay={400}
-        >
-          <CustomButton
-            onPress={() => onLoginPress(email, password)}
-            isEnabled={isValid}
-            isLoading={isLoading}
-            buttonStyle={styles.loginButton}
-            textStyle={styles.loginButtonText}
-            text={'Log In'}
-          />
-          <Text style={styles.signupLink} onPress={onSignupLinkPress}>
+        <View style={styles.footer}>
+          <View ref={(ref) => this.buttonRef = ref} animation={'bounceIn'} duration={600} delay={400}>
+            <CustomButton
+              onPress={() => onLoginPress(email, password)}
+              isEnabled={isValid}
+              isLoading={isLoading}
+              buttonStyle={styles.loginButton}
+              textStyle={styles.loginButtonText}
+              text={'Log In'}
+            />
+          </View>
+          <Text
+            ref={(ref) => this.linkRef = ref}
+            style={styles.signupLink}
+            onPress={onSignupLinkPress}
+            animation={'fadeIn'}
+            duration={600}
+            delay={400}
+          >
             {'Not registered yet?'}
           </Text>
         </View>

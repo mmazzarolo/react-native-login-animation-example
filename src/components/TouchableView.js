@@ -6,7 +6,7 @@ const IS_RIPPLE_EFFECT_SUPPORTED = Platform.Version >= 21 && IS_ANDROID
 
 const TouchableView = ({ isRippleDisabled, rippleColor, children, style, ...props }) => {
   if (IS_RIPPLE_EFFECT_SUPPORTED && !isRippleDisabled) {
-    const background = TouchableNativeFeedback.Ripple(rippleColor, false)
+    const background = TouchableNativeFeedback.Ripple('#FFF')
     return (
       <TouchableNativeFeedback {...props} background={background}>
         <View style={style}>{children}</View>

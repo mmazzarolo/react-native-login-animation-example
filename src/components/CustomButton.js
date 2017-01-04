@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react'
 import { ActivityIndicator, StyleSheet, Text } from 'react-native'
+import { View } from 'react-native-animatable'
 
 import TouchableView from './TouchableView'
 
-const CustomButton = ({ onPress, isEnabled, isLoading, text, buttonStyle, textStyle }) => {
+const CustomButton = ({ onPress, isEnabled, isLoading, text, buttonStyle, textStyle, ...otherProps }) => {
   const onButtonPress = isEnabled && !isLoading ? onPress : () => null
 
   return (
-    <TouchableView onPress={onButtonPress} style={[styles.button, buttonStyle]}>
-      {(isLoading) && <ActivityIndicator style={styles.spinner} color={'grey'} />}
-      {(!isLoading) && <Text style={[styles.text, textStyle]}>{text}</Text>}
-    </TouchableView>
+    <View {...otherProps}>
+      <TouchableView onPress={onButtonPress} style={[styles.button, buttonStyle]}>
+        {(isLoading) && <ActivityIndicator style={styles.spinner} color={'grey'} />}
+        {(!isLoading) && <Text style={[styles.text, textStyle]}>{text}</Text>}
+      </TouchableView>
+    </View>
   )
 }
 

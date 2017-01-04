@@ -20,10 +20,11 @@ export default class SignupForm extends Component {
   }
 
   hideForm = async () => {
-    if (this.footerRef) {
+    if (this.buttonRef && this.formRef && this.linkRef) {
       await Promise.all([
-        this.footerRef.zoomOut(200),
-        this.formRef.fadeOut(300)
+        this.buttonRef.zoomOut(200),
+        this.formRef.fadeOut(300),
+        this.linkRef.fadeOut(300)
       ])
     }
   }
@@ -69,21 +70,25 @@ export default class SignupForm extends Component {
             isEnabled={!isLoading}
           />
         </View>
-        <View
-          style={styles.footer}
-          ref={(ref) => this.footerRef = ref}
-          animation={'bounceIn'}
-          duration={600} delay={400}
-        >
-          <CustomButton
-            onPress={() => onSignupPress(email, password, fullName)}
-            isEnabled={isValid}
-            isLoading={isLoading}
-            buttonStyle={styles.createAccountButton}
-            textStyle={styles.createAccountButtonText}
-            text={'Create Account'}
-          />
-          <Text style={styles.loginLink} onPress={onLoginLinkPress}>
+        <View style={styles.footer}>
+          <View ref={(ref) => this.buttonRef = ref} animation={'bounceIn'} duration={600} delay={400}>
+            <CustomButton
+              onPress={() => onSignupPress(email, password, fullName)}
+              isEnabled={isValid}
+              isLoading={isLoading}
+              buttonStyle={styles.createAccountButton}
+              textStyle={styles.createAccountButtonText}
+              text={'Create Account'}
+            />
+          </View>
+          <Text
+            ref={(ref) => this.linkRef = ref}
+            style={styles.loginLink}
+            onPress={onLoginLinkPress}
+            animation={'fadeIn'}
+            duration={600}
+            delay={400}
+          >
             {'Already have an account?'}
           </Text>
         </View>
