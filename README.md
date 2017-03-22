@@ -7,7 +7,7 @@ The example is available in Exponent too: https://getexponent.com/@community/log
 
 ## Gif and vid!
 <p align="center">
-<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/low-quality-app-intro.gif"></img>  
+<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/low-quality-app-intro.gif" /></img>  
 </p>
   
 <p align="center">
@@ -49,15 +49,15 @@ The dependencies needed for this app are the following:
 
 ## Some visual cues on the app structure
 <p align="center">
-<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/Schermata%202017-01-02%20alle%2012.58.15.png"></img>  
+<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/Schermata%202017-01-02%20alle%2012.58.15.png" />
 </p>
   
 <p align="center">
-<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/Schermata%202017-01-02%20alle%2012.59.33.png"></img>  
+<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/Schermata%202017-01-02%20alle%2012.59.33.png" />
 </p>
   
 <p align="center">
-<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/Schermata%202017-01-02%20alle%2012.59.48.png"></img>  
+<img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/Schermata%202017-01-02%20alle%2012.59.48.png" />  
 </p>
 
 ## Animations info and app flow description
