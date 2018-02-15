@@ -8,7 +8,7 @@ The example is available [in Exponent too](https://getexponent.com/@community/lo
 
 Please be aware that this repo is used only as a demo of the animation, so I will not keep it up to date with the latest react-native releases. 
 
-## Gif and vid!
+## Showcase
 <p align="center">
 <img src="https://raw.githubusercontent.com/mmazzarolo/react-native-login-animation-example/master/extras/low-quality-app-intro.gif" /></img>  
 </p>
