@@ -6,7 +6,7 @@ This is a simple demo of a login/signup animation built with react-native, inspi
 This repository contains the source code used to run the animation.   
 The example is available [in Exponent too](https://getexponent.com/@community/login-animation-example).  
 
-Please be aware that this repo is used only as a demo of the animation, so I will not keep it up to date with the latest react-native releases. 
+Please be aware that this repo is used only as a demo of the animation, so **I will not keep it up to date** with the latest react-native releases. 
 
 ## Showcase
 <p align="center">
